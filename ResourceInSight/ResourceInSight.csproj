@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Fonts\Font Awesome 6 Brands-Regular-400.otf" />
+	  <None Remove="Fonts\Font Awesome 6 Free-Regular-400.otf" />
+	  <None Remove="Fonts\Font Awesome 6 Free-Solid-900.otf" />
+	  <None Remove="Fonts\GoogleSans-Bold.ttf" />
+	  <None Remove="Fonts\GoogleSans-BoldItalic.ttf" />
+	  <None Remove="Fonts\GoogleSans-Italic.ttf" />
+	  <None Remove="Fonts\GoogleSans-Medium.ttf" />
+	  <None Remove="Fonts\GoogleSans-MediumItalic.ttf" />
+	  <None Remove="Fonts\GoogleSans-Regular.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Assets\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="..\.editorconfig" Link=".editorconfig" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Fonts\Font Awesome 6 Brands-Regular-400.otf" />
+	  <Resource Include="Fonts\Font Awesome 6 Free-Regular-400.otf" />
+	  <Resource Include="Fonts\Font Awesome 6 Free-Solid-900.otf" />
+	  <Resource Include="Fonts\GoogleSans-Bold.ttf" />
+	  <Resource Include="Fonts\GoogleSans-BoldItalic.ttf" />
+	  <Resource Include="Fonts\GoogleSans-Italic.ttf" />
+	  <Resource Include="Fonts\GoogleSans-Medium.ttf" />
+	  <Resource Include="Fonts\GoogleSans-MediumItalic.ttf" />
+	  <Resource Include="Fonts\GoogleSans-Regular.ttf" />
+	</ItemGroup>
+
+</Project>
