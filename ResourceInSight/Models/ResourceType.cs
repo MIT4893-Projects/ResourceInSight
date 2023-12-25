@@ -1,4 +1,6 @@
-﻿namespace ResourceInSight.Models;
+﻿using System.ComponentModel;
+
+namespace ResourceInSight.Models;
 
 public enum ResourceType
 {

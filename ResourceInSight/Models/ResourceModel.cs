@@ -1,19 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
 namespace ResourceInSight.Models;
 
-internal class ResourceModel(ResourceType resourceType) : IResourceModel
+public static class ResourceModel
 {
-    public ResourceType ResourceType { get; } = resourceType;
+    public static readonly PerformanceCounter CpuCounter = new("Processor", "% Processor Time", "_Total", true);
+    public static readonly PerformanceCounter MemoryCounter = new("Memory", "% Committed Bytes In Use", true);
+    public static readonly PerformanceCounter DiskCounter = new("LogicalDisk", "% Free Space", "_Total", true);
 
-    public decimal GetResourcePercent()
+    private static float GetPerformanceCounterPercent(PerformanceCounter performanceCounter)
     {
-        PerformanceCounter performanceCounter = new("Memory", "Available MBytes");
-        return performanceCounter.RawValue;
+        // repeat 3 times to get the correct value
+        for (int i = 0; i < 3; i++)
+            performanceCounter.NextValue();
+
+        return performanceCounter.NextValue();
+    }
+
+    private static float GetCpuPercent()
+    {
+        return GetPerformanceCounterPercent(CpuCounter);
+    }
+
+    private static float GetMemoryPercent()
+    {
+        return GetPerformanceCounterPercent(MemoryCounter);
+    }
+
+    private static float GetDiskPercent()
+    {
+        return GetPerformanceCounterPercent(DiskCounter);
+    }
+
+    public static float GetResourcePercent(ResourceType resourceType)
+    {
+        return resourceType switch
+        {
+            ResourceType.CPU => GetCpuPercent(),
+            ResourceType.Memory => GetMemoryPercent(),
+            ResourceType.Disk => GetDiskPercent(),
+            _ => throw new ArgumentException("Invalid resource type")
+        };
     }
 }
