@@ -5,13 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:ResourceInSight.Views"
              mc:Ignorable="d"
-             Margin="10">
+             Margin="10,5">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25" />
             <ColumnDefinition Width="10" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
+
         <TextBlock FontFamily="{StaticResource FontAwesomeSolid}"
                    FontSize="20"
                    Text="{Binding ResourceIcon}"
@@ -20,6 +21,7 @@
         <TextBlock Grid.Column="2"
                    FontFamily="{StaticResource GoogleSans}"
                    FontSize="25"
+                   HorizontalAlignment="Center"
                    Text="100%" />
     </Grid>
 </UserControl>

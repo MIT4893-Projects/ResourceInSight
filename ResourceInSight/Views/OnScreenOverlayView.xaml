@@ -11,8 +11,6 @@
         ShowInTaskbar="False"
         Topmost="True"
         WindowStyle="None"
-        Width="Auto"
-        Height="Auto"
         SizeToContent="WidthAndHeight">
     <StackPanel>
         <local:ResourceInfoView ResourceType="CPU" />
