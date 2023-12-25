@@ -11,17 +11,7 @@ public partial class ResourceInfoView : UserControl
 {
     private readonly ResourceInfoViewModel viewModel = new();
 
-    private string resourceIcon = string.Empty;
-
-    public string ResourceIcon
-    {
-        get => resourceIcon;
-        set
-        {
-            resourceIcon = value;
-            viewModel.ResourceIcon = value;
-        }
-    }
+    public ResourceType ResourceType { get; set; }
 
     public ResourceInfoView()
     {
@@ -30,8 +20,6 @@ public partial class ResourceInfoView : UserControl
         DataContext = viewModel;
 
         Loaded += UserControl_Loaded;
-
-        new ResourceModel(ResourceType.CPU).GetResourcePercent();
     }
 
     private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -41,6 +29,6 @@ public partial class ResourceInfoView : UserControl
 
     private void UpdateCustomProperty()
     {
-        viewModel.ResourceIcon = ResourceIcon;
+        viewModel.ResourceType = ResourceType;
     }
 }

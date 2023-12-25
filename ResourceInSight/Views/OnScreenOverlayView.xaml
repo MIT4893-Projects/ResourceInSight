@@ -5,6 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ResourceInSight.Views"
+        xmlns:vm="clr-namespace:ResourceInSight.ViewModels"
         mc:Ignorable="d"
         AllowsTransparency="True"
         ShowInTaskbar="False"
@@ -13,28 +14,9 @@
         Width="Auto"
         Height="Auto"
         SizeToContent="WidthAndHeight">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-
-        <local:ResourceInfoView VerticalAlignment="Center"
-                                ResourceIcon="&#xf2db;" />
-        <local:ResourceInfoView Grid.Column="1"
-                                VerticalAlignment="Center"
-                                ResourceIcon="&#xf538;" />
-        <local:ResourceInfoView Grid.Row="1"
-                                VerticalAlignment="Center"
-                                ResourceIcon="&#xf0a0;" />
-        <local:ResourceInfoView Grid.Column="1"
-                                Grid.Row="1"
-                                VerticalAlignment="Center"
-                                ResourceIcon="&#xe163;" />
-    </Grid>
+    <StackPanel>
+        <local:ResourceInfoView ResourceType="CPU" />
+        <local:ResourceInfoView ResourceType="Memory" />
+        <local:ResourceInfoView ResourceType="Disk" />
+    </StackPanel>
 </Window>

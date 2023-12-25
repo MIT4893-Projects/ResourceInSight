@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using ResourceInSight.Models;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace ResourceInSight.ViewModels;
@@ -13,6 +14,23 @@ public class ResourceInfoViewModel : INotifyPropertyChanged
         {
             resourceIcon = value;
             OnPropertyChanged();
+        }
+    }
+
+    private ResourceType resourceType;
+    public ResourceType ResourceType
+    {
+        get => resourceType;
+        set
+        {
+            resourceType = value;
+            ResourceIcon = resourceType switch
+            {
+                ResourceType.CPU => "\uf2db",
+                ResourceType.Memory => "\uf538",
+                ResourceType.Disk => "\uf0a0",
+                _ => throw new ArgumentException("Invalid resource type")
+            };
         }
     }
 
