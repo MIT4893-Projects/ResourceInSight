@@ -5,5 +5,4 @@ public enum ResourceType
     CPU,
     Memory,
     Disk,
-    GPU
 }
