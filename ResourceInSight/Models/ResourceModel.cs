@@ -6,14 +6,17 @@ public static class ResourceModel
 {
     public static readonly PerformanceCounter CpuCounter = new("Processor", "% Processor Time", "_Total", true);
     public static readonly PerformanceCounter MemoryCounter = new("Memory", "% Committed Bytes In Use", true);
-    public static readonly PerformanceCounter DiskCounter = new("LogicalDisk", "% Free Space", "_Total", true);
+    public static readonly PerformanceCounter DiskCounter = new("LogicalDisk", "% Idle Time", "_Total", true);
+
+    static ResourceModel()
+    {
+        CpuCounter.NextValue();
+        MemoryCounter.NextValue();
+        DiskCounter.NextValue();
+    }
 
     private static float GetPerformanceCounterPercent(PerformanceCounter performanceCounter)
     {
-        // repeat 3 times to get the correct value
-        for (int i = 0; i < 3; i++)
-            performanceCounter.NextValue();
-
         return performanceCounter.NextValue();
     }
 
@@ -29,7 +32,7 @@ public static class ResourceModel
 
     private static float GetDiskPercent()
     {
-        return GetPerformanceCounterPercent(DiskCounter);
+        return 100 - GetPerformanceCounterPercent(DiskCounter);
     }
 
     public static float GetResourcePercent(ResourceType resourceType)
