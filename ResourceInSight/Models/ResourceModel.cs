@@ -4,9 +4,9 @@ namespace ResourceInSight.Models;
 
 public static class ResourceModel
 {
-    public static readonly PerformanceCounter CpuCounter = new("Processor", "% Processor Time", "_Total", true);
-    public static readonly PerformanceCounter MemoryCounter = new("Memory", "% Committed Bytes In Use", true);
-    public static readonly PerformanceCounter DiskCounter = new("LogicalDisk", "% Idle Time", "_Total", true);
+    private static readonly PerformanceCounter CpuCounter = new("Processor", "% Processor Time", "_Total", true);
+    private static readonly PerformanceCounter MemoryCounter = new("Memory", "% Committed Bytes In Use", true);
+    private static readonly PerformanceCounter DiskCounter = new("LogicalDisk", "% Idle Time", "_Total", true);
 
     static ResourceModel()
     {
